@@ -1,0 +1,7 @@
+<% provide(:title, 'Posts') %>
+
+<table class="table table-striped">
+  <% @posts.each do |post| %>
+    <%= render "show", :post => post %>
+  <% end %>
+</table>
