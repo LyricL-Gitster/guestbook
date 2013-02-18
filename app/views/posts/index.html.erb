@@ -1,7 +1,33 @@
 <% provide(:title, 'Posts') %>
 
+<div class="well well-small" id="comments-header">
+  <i class="icon-comment icon-white"></i>
+  <strong>POSTS</strong>
+  <span class="pull-right">
+    <% if current_user.nil? %>
+      <%= link_to "Login", "#login_modal", data: {toggle:"modal"} %> to post
+    <% else %>
+      <%= link_to "Log Out", log_out_path %>
+    <%end%>
+  </span>
+</div>
+
+<%= render "posts/form", post:current_user.posts.new unless current_user.nil? %>
+
+<%= paginate @posts %>
+
 <table class="table table-striped">
   <% @posts.each do |post| %>
     <%= render "show", :post => post %>
   <% end %>
 </table>
+
+<%= render "user_sessions/form", user_session:@user_session if current_user.nil? %>
+
+<% if @bad_login %>
+  <%= javascript_tag do %>
+    $(function() {
+        $('#login_modal').modal('show');
+    });
+  <% end %>
+<% end %>

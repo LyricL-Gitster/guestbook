@@ -7,11 +7,45 @@
 }
 
 body {
-	background-color:$blue;
+	background-color: $blue;
 }
 
 #sidebar img{
 	border-radius: 20px;
 	padding: 1px;
 	width: 180px;
+}
+
+#comments-header {
+	background-color: $gray;
+	color: $white;
+	a {
+		color: $blue;
+		text-transform:uppercase;
+		font-weight: bold;
+		&:hover {
+		text-decoration: none;
+    	color: $gray;
+    	background-color: $blue;
+  		}
+	}
+}
+
+.well-small {
+	padding: 5px;
+}
+
+.pagination {
+	text-align: center;
+}
+
+table {
+	td p {
+		width: 500px;
+		word-wrap: break-word;
+	}
+}
+
+textarea {
+	width: 100%;
 }

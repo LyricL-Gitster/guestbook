@@ -1,17 +1,19 @@
-<tr id="post_<%= post.id %>"><td>
-	<%= gravatar_for post.user %>
-	<span class="info">
-		<span class="muted text-left">
-			<strong><%= post.user.name %></strong>
+<tr id="post_<%= post.id %>" class="post">
+	<td><center><%= gravatar_for post.user %></center></td>
+	<td>
+		<span class="info">
+			<span class="muted text-left">
+				<strong><%= post.user.name %></strong>
+			</span>
+			<span class="muted pull-right">
+				<em><%= post.location %></em>
+				---
+				<em>
+					<%= post.created_at.to_s(:short_date) %> 
+					<%= post.created_at.to_s(:short_time) %>
+				</em>
+			</span>
 		</span>
-		<span class="muted pull-right">
-			<em><%= post.location %></em>
-			---
-			<em>
-				<%= post.created_at.to_s(:short_date) %> 
-				<%= post.created_at.to_s(:short_time) %>
-			</em>
-		</span>
-	</span>
-  	<%= sanitize simple_format(post.message), :tags => %w(p br) %>
-</td></tr>
+	  	<%= sanitize simple_format(post.message), :tags => %w(p br) %>
+	</td>
+</tr>

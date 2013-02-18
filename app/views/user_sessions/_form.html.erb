@@ -1,0 +1,28 @@
+<div id="login_modal" class="modal hide fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+  <div class="modal-header">
+    <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+    <h3 id="myModalLabel">Login</h3>
+  </div>
+  <div class="modal-body">
+    <%= form_for user_session, :as => :user_session, :url => { :controller=>'user_sessions', :action => "create" } do |f| %>
+      <%= render "shared/error_messages", :target => user_session %>
+      <fieldset>
+        <p>Name/Email</p>
+        <%= f.text_field :name %>
+        <br />
+        <span class="help-block">Entering your email address will enable your 
+          <%= link_to "Gravatar", "http://en.gravatar.com/", :target => '_blank' %>!
+        </span>
+        <br />
+        <br />
+        <%= f.label :password %>
+        <%= f.password_field :password %><br />
+        <%= f.submit "Log in" %>
+      </fieldset>
+    <% end %>
+    <p class="text-info">
+      Don't have a username? 
+      <%= link_to "Register Here.", new_user_path %>
+    </p>
+  </div>
+</div>

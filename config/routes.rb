@@ -5,6 +5,11 @@ Guestbook::Application.routes.draw do
 
   resources :users
 
+  resources :user_sessions
+
+  match 'login' => "user_sessions#new",      :as => :login
+  match 'log_out' => "user_sessions#destroy", :as => :log_out
+
   # The priority is based upon order of creation:
   # first created -> highest priority.
 

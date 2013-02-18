@@ -1,29 +1,30 @@
-<%= form_for(@post) do |f| %>
-  <% if @post.errors.any? %>
+<%= form_for(post) do |f| %>
+  <% if post.errors.any? %>
     <div id="error_explanation">
       <h2><%= pluralize(@post.errors.count, "error") %> prohibited this post from being saved:</h2>
-
       <ul>
-      <% @post.errors.full_messages.each do |msg| %>
+      <% post.errors.full_messages.each do |msg| %>
         <li><%= msg %></li>
       <% end %>
       </ul>
     </div>
   <% end %>
-
-  <div class="field">
-    <%= f.label :message %><br />
-    <%= f.text_field :message %>
-  </div>
-  <div class="field">
-    <%= f.label :location %><br />
-    <%= f.text_field :location %>
-  </div>
-  <div class="field">
-    <%= f.label :user_id %><br />
-    <%= f.number_field :user_id %>
-  </div>
-  <div class="actions">
-    <%= f.submit %>
-  </div>
+  <table>
+    <tbody>
+      <tr id="new_post" class="post">
+        <td class="info"><center>
+          <%= gravatar_for post.user %><br />
+          <strong><%= post.user.name %></strong><br />
+          <%= post.user.location %><br />
+          <%= link_to "edit my info", edit_user_path(post.user.id) %>
+        </center></td>
+        <td>
+          <p><%= f.text_area :message, :cols => "120", :rows => "10" %></p>
+          <%= f.hidden_field :location, :value =>post.user.location %>
+          <%= f.hidden_field :user_id %>
+          <%= f.submit "Add post" %>
+        </td>
+      </tr>
+    </tbody>
+  </table>
 <% end %>
