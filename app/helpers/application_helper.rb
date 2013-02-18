@@ -1,7 +1,7 @@
 module ApplicationHelper
 
-	def full_title(page_title)
-		base_title = "Midwest Winter Guestbook"
+	def full_title(page_title="")
+		base_title = "Midwest GIF-tacular Winter Guestbook"
 		if page_title.empty?
 			base_title
 		else
