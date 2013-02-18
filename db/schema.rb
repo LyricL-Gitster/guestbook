@@ -14,7 +14,7 @@
 ActiveRecord::Schema.define(:version => 20130217211722) do
 
   create_table "posts", :force => true do |t|
-    t.string   "message"
+    t.text     "message"
     t.string   "location"
     t.integer  "user_id"
     t.datetime "created_at", :null => false
